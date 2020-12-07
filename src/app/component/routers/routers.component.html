@@ -1,0 +1,9 @@
+<h1>路由传参</h1>
+<h4>2.动态路由传参</h4>
+<ul>
+    <li *ngFor="let item of arr;let key = index">
+        <a [routerLink]="['/axios/',key]">{{key}}---{{item}}</a>
+    </li>
+</ul>
+<button (click)="goAxios()">js动态路由跳转goAxios（传参）</button>
+<button (click)="goCycle()">js动态路由跳转goCycle</button>

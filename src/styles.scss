@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+// 公共样式写在这里
+
+* {
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}

@@ -1,0 +1,87 @@
+<!-- 5.图片的两种引入方式 -->
+<img id="img1" src="assets/hehua.jpg" class="pic">
+<img id="img2" [src]="imgUrl" class="pic">
+<!-- 获取循环索引 -->
+<ul>
+    <li *ngFor='let item of arr; let key = index'>{{key}}---{{item}}</li>
+</ul>
+<!-- 6.条件判断 *ngIF  -->
+<div *ngIf="flag">true</div>
+<div *ngIf="!flag">false</div>
+
+<!-- 7.给索引为1的循环项添加类，写法1，angular没有提供ngElse -->
+<ul>
+    <li *ngFor='let item of arr; let key = index'>
+        <span *ngIf='key == 1' class="color">{{key}}---{{item}}</span>
+        <span *ngIf="key != 1">{{key}}---{{item}}</span>
+    </li>
+</ul>
+
+<!-- 8.条件判断语句 -->
+<div [ngSwitch]="orderStatus">
+    <p *ngSwitchCase=0>
+        表示已支付
+    </p>
+    <p *ngSwitchCase=1>
+        表示已发货
+    </p>
+    <p *ngSwitchCase=2>
+        表示已签收
+    </p>
+    <p *ngSwitchDefault>
+        表示其他状态
+    </p>
+</div>
+
+<!-- 9.动态添加类名 根据ture添加或false不添加-->
+<div [ngClass]="{'red': true, 'font': '!flag'}">添加类</div>
+
+<!-- 10.给索引为1的循环项添加类，写法2 -->
+<ul>
+    <li *ngFor='let item of arr, let key = index'>
+        <!-- <span [ngClass]='key==1 ? "red" : "" '>{{key}}---{{item}}</span> -->
+        <!-- 写法3 -->
+        <span [ngClass]='{"red": key==0, "blue": key ==1, "pink": key == 2}'>{{key}}---{{item}}</span>
+    </li>
+</ul>
+
+<!-- 11.sytle样式绑定两种用法 [ngStyle]-->
+<div [ngStyle]="{'color':'red'}">style样式</div>
+<div [ngStyle]="{'color':pinkStyle}">style样式</div>
+
+<!-- 12.管道，angular提供了很多管道，例如日期格式化
+public today = new Date()
+-->
+<p>没有格式化之前的日期格式：{{today}}</p>
+<h3>格式化之后的日期格式</h3>
+<p>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+
+<!-- 其他管道：http://bbs.itying.com/topic/5bf519657e9f5911d41f2a34 -->
+
+<!-- 13.angular事件 （事件） -->
+<button (click)=clickEvent()>点击事件</button>
+
+<!-- 获取和改变数据 通过this -->
+<div>订单状态{{orderStatus}}</div>
+<button (click)='getData()'>获取订单状态</button>
+<button (click)='setData()'>改变订单状态</button>
+
+<!-- 14.表单事件，事件对象 $event -->
+<label>keydown</label><input type="text" (keydown)='keyDown()'>
+<label>keyup</label><input type="text" (keyup)='keyUp($event)'>
+
+<!-- 15.根据事件对象获取dom元素，进行dom操作 -->
+<div (click)='domHandle($event)'>根据事件对象获取dom元素，进行dom操作</div>
+
+
+<!-- 16.angular 双向数据绑定，针对表单而言 [(ngModel)]
+1.根模块导入import 
+2.定义数据
+3.书写标签
+ 
+对MVVM理解：model改变会影响视图，视图改变反过来会影响model
+对[(ngModel)]理解，中括号表示属性绑定，小括号表示事件绑定
+-->
+
+<input [(ngModel)]='initValue' type="text" />{{initValue}}
+<button (click)='changeValue()'>改变值</button>

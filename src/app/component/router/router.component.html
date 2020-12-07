@@ -1,0 +1,10 @@
+<h1>路由传参</h1>
+<h4>1.get传参</h4>
+<ul>
+    <li *ngFor="let item of arr;let key = index">
+        <a [routerLink]="['/http']" [queryParams]="{uid:key}">{{key}}---{{item}}</a>
+    </li>
+</ul>
+
+<button (click)="goHttp()">js-get跳转 goHttp(传参)</button>
+<button (click)="goCycle()">js动态路由跳转goCycle</button>

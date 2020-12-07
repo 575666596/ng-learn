@@ -1,0 +1,8 @@
+<div class="box">原生获取一般dom元素</div>
+
+<div class="box1" *ngIf="flag">dom加载完毕之后</div>
+<hr>
+<div class="box2" #mybox>使用ViewChild获取dom节点</div>
+
+<app-header #myheader></app-header>
+<button (click)="getChild()">调用子组件的get方法</button>

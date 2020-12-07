@@ -1,0 +1,14 @@
+<div class="box">
+    <input type="text" [(ngModel)]="searchVal"><button (click)="goSearch()">搜索</button>
+    <br>
+    <button (click)="clear()">清空历史记录</button>
+
+    <ul>历史记录
+        <li *ngFor="let item of list; let key = index;">
+            <span>{{item}}</span>
+            <button (click)="del(key)" style="width: 40px;margin-left: 20px;">x</button>
+        </li>
+    </ul>
+</div>
+
+<button (click)="testServe()">test：访问服务的公共方法</button>

@@ -1,0 +1,43 @@
+<p>ng g component component/form 会创建一个组件，而且会在跟模块中导入和声明这个form组件，这样我们才可以使用它</p>
+
+<!-- 第二讲: 表单双向数据绑定 -->
+
+<h2>人员登记表</h2>
+
+<div class="people_list">
+    <ul>
+        <!-- 1.input 直接绑定-->
+        <li>姓名：<input type="text" id="username" [(ngModel)]="userInfo.name"></li>
+        <li>性别：
+            <!-- 2.radio value值要和[(ngModel)]绑定的值匹配,而且是字符串-->
+            <input type="radio" value="1" name="sex" id="sex1" [(ngModel)]="userInfo.sex">
+            <label for="sex1">男</label>
+            <input type="radio" value="2" name="sex" id="sex2" [(ngModel)]="userInfo.sex">
+            <label for="sex2">女</label>
+        </li>
+        <!-- 3.select option的velue要与绑定的值匹配 -->
+        <li>城市:
+            <select name="city" [(ngModel)]="userInfo.city">
+                <option [value]="item" *ngFor="let item of userInfo.cityList">{{item}}</option>
+            </select>
+        </li>
+        <!-- 4.checkbox 根据 true或false决定是否被选中,这里还有一个技巧,通过属性绑定和循环索引,使id和for属性对应-->
+        <li>爱好:
+            <span *ngFor="let item of userInfo.hobby; let key = index;">
+                <input type="checkbox" [id]="'check' + key" [(ngModel)]="item.checked" /><label
+                    [for]="'check' + key">{{item.title}}</label> &nbsp;&nbsp;
+            </span>
+        </li>
+        <!-- 5. textarea,同input -->
+        <li>备注:
+            <textarea [(ngModel)]="userInfo.mark"></textarea>
+        </li>
+    </ul>
+
+    <!-- 表单外面没有form标签包裹的话，点击button和submit之后是不会触发默认的提交行为的，在单页面中，可以加form标签，也可以不加 -->
+    <button (click)='doSubmit()'>获取表单的值</button>
+    <pre>
+        管道，转json字符串
+        {{userInfo | json}}
+    </pre>
+</div>

@@ -1,0 +1,7 @@
+<app-child [msg]='msg' [get]='get' [parent]='this' #child></app-child>
+
+<h2>父组件获取子组件的值</h2>
+<p>{{child}}</p>
+<p>{{child.flag}}</p>
+<p>{{child.add}}</p>
+<button (click)="child.add()">调用子组件get方法</button>

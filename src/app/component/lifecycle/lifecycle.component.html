@@ -1,0 +1,8 @@
+<h2>{{msg}}</h2>
+<br>
+<button (click)="changeMsg()">改变msg的值</button>
+<input type="text" [(ngModel)]="name">
+
+<!-- // 如果父组件传的是静态数据，那么不用属性绑定 [pMsg] -->
+<app-lifecycle-child [pMsg]='msg' #mychild *ngIf="flag"></app-lifecycle-child>
+<button (click)="flag=!flag">显示和销毁子组件</button>

@@ -1,0 +1,10 @@
+<div class="box">
+    <input type="text" [(ngModel)]="searchVal"><button (click)="goSearch()">搜索</button>
+    <br>
+    <ul>历史记录
+        <li *ngFor="let item of list; let key = index;">
+            <span>{{item}}</span>
+            <button (click)="del(key)" style="width: 40px;margin-left: 20px;">x</button>
+        </li>
+    </ul>
+</div>
